@@ -1,0 +1,101 @@
+body,
+body * {
+  margin: 0;
+  padding: 0;
+  vertical-align: top;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.container {
+  display: grid;
+  width: 70%;
+  margin: auto;
+  padding-top: 20px;
+}
+
+.form-container {
+  display: flex;
+  max-height: 420px;
+}
+
+.img {
+  width: 100%;
+  background: url('./img/Envy-Colt.png') center/contain no-repeat;
+}
+#reg {
+  margin-bottom: 10px;
+}
+.form {
+  font-style: italic;
+  gap: 15px 0;
+  padding: 16px;
+  background-color: #5a5f6f;
+  color: #fff;
+  border-radius: 3px;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 8px;
+  border: none;
+  outline: none;
+  background-color: #5a5f6f;
+  border-bottom: 2px solid #fff;
+  color: #fff;
+}
+input label {
+  padding: 8px;
+}
+
+.heading,
+.grid-card h4,
+.form h3 {
+  font-family: cursive;
+  padding: 5px 10px 20px 10px;
+}
+.heading {
+  margin-top: 40px;
+}
+
+.grid-card {
+  display: grid;
+  text-align: center;
+  grid-template-columns: 1fr 3fr 3fr 4fr 2fr 3fr 3fr;
+  gap: 15px 0;
+  padding: 16px;
+  background-color: #5a5f6f;
+  color: #fff;
+  border-radius: 3px;
+}
+.grid-card p,
+.grid-card h4 {
+  padding: 10px;
+  border-bottom: 1px solid #fff;
+}
+
+button {
+  border: none;
+  border-radius: 5px;
+  background-color: #5db75f;
+  color: #fff;
+  padding: 6px;
+  margin: 8px;
+  cursor: pointer;
+}
+button.dlt {
+  background-color: #d45449;
+}
+button.put {
+  background-color: #44cceb;
+  padding: 7px 35px;
+}
+
+@media screen and (max-width: 800px) {
+  .container {
+    margin: 0 5% 3% 2%;
+  }
+}
