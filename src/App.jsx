@@ -22,7 +22,6 @@ function App() {
   const sortByKm = () => {
     const action = {
       type: 'sort_km',
-      payload: kolts,
     };
     dispachSort(action);
   };
@@ -30,7 +29,6 @@ function App() {
   const sortByDate = () => {
     const action = {
       type: 'sort_date',
-      payload: kolts,
     };
     dispachSort(action);
   };
@@ -92,28 +90,18 @@ function App() {
       </div>
       <div
         style={{
-          display: 'flex',
-          justifyContent: 'space-evenly',
-          margin: '30px',
+          textAlign: 'center',
         }}
       >
-        <div class='byKm'>
-          <h2 style={{ margin: '10px' }}>Sorting by ride</h2>
-          {sort.map((kolt) => (
-            <div key={kolt.id}>
-              Kolt <b>{kolt.regCode}</b>, total ride: <b>{kolt.totalRide}</b>{' '}
-              km.
-            </div>
-          ))}
-        </div>
-        <div className='byDate'>
-          <h2 style={{ margin: '10px' }}>Sorting by date</h2>
-          {sort.map((kolt) => (
-            <div key={kolt.id}>
-              Kolt <b>{kolt.regCode}</b>, last used: <b>{kolt.lastUsed}</b>
-            </div>
-          ))}
-        </div>
+        <h2 style={{ margin: '10px' }}>
+          Sorting kolts by total Ride and last used date
+        </h2>
+        {sort.map((kolt) => (
+          <div key={kolt.id}>
+            Kolt <b>id_{kolt.id}</b> <i>{kolt.regCode}</i>, total ride:{' '}
+            <b>{kolt.totalRide}</b> km., last used: <b>{kolt.lastUsed}</b>
+          </div>
+        ))}
       </div>
     </>
   );
