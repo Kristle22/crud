@@ -94,6 +94,7 @@ function App() {
         style={{
           display: 'flex',
           justifyContent: 'space-evenly',
+          margin: '30px',
         }}
       >
         <div class='byKm'>
@@ -109,7 +110,7 @@ function App() {
           <h2 style={{ margin: '10px' }}>Sorting by date</h2>
           {sort.map((kolt) => (
             <div key={kolt.id}>
-              Kolt <b>{kolt.regCode}</b>, last uaed: <b>{kolt.lastUsed}</b>
+              Kolt <b>{kolt.regCode}</b>, last used: <b>{kolt.lastUsed}</b>
             </div>
           ))}
         </div>

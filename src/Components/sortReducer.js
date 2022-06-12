@@ -6,7 +6,11 @@ function sortReducer(state, action) {
       newState = action.payload.sort((a, b) => a.totalRide - b.totalRide);
       break;
     case 'sort_date':
-      newState = action.payload.sort((a, b) => new Date(a.lastUsed).getTime() - new Date(b.lastUsed).getTime());
+      newState = action.payload.sort((x, y) => {
+        let a = new Date(x.lastUsed);
+        let b = new Date(y.lastUsed);
+        return a - b;
+      });
       break;
     default:
       newState = state;
