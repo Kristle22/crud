@@ -4,14 +4,14 @@ function List({ kolts, setDeleteData, setModalData }) {
   return (
     <>
       <h2 className='heading'>ADMIN KOLT SCOOTER RENTAL</h2>
-      <div className='grid-card'>
-        <h4>ID</h4>
-        <h4>Reg. Code</h4>
-        <h4>Busy</h4>
-        <h4>Last Used</h4>
-        <h4>Total Ride</h4>
-        <h4></h4>
-        <h4></h4>
+      <div className='flex-card'>
+        <div className='flex-row'>
+          <h4>ID</h4>
+          <h4>Reg. Code</h4>
+          <h4>Availability</h4>
+          <h4>Last Used</h4>
+          <h4>Total Ride</h4>
+        </div>
         {kolts
           ? kolts.map((klt) => (
               <Kolt

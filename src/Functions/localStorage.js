@@ -25,7 +25,7 @@ export function read() {
   return data;
 }
 
-export function remove(id) {
+export function remove({ id }) {
   let data = localStorage.getItem(key);
   if (null === data) {
     JSON.stringify([]);
@@ -41,8 +41,8 @@ export function edit(obj) {
   if (null === data) {
     data = JSON.stringify([]);
   }
-  data = JSON.parse(obj);
-  data = data.map(oldObject => oldObject !== obj ? oldObject : obj);
+  data = JSON.parse(data);
+  data = data.map(oldObject => oldObject.id !== obj.id ? oldObject : obj);
   data = JSON.stringify(data);
   localStorage.setItem(key, data);
 }
