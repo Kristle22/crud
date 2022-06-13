@@ -22,6 +22,15 @@ function App() {
   const sortByKm = () => {
     const action = {
       type: 'sort_km',
+      payload: kolts,
+    };
+    dispachSort(action);
+  };
+
+  const refresh = () => {
+    const action = {
+      type: 'refresh',
+      payload: kolts,
     };
     dispachSort(action);
   };
@@ -29,6 +38,7 @@ function App() {
   const sortByDate = () => {
     const action = {
       type: 'sort_date',
+      payload: kolts,
     };
     dispachSort(action);
   };
@@ -73,6 +83,11 @@ function App() {
     <>
       <div className='container'>
         <Create setCreateData={setCreateData} />
+        <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
+          <button onClick={sortByKm}>SORT by km.</button>
+          <button onClick={refresh}>REFRESH</button>
+          <button onClick={sortByDate}>SORT by date</button>
+        </div>
         <List
           kolts={kolts}
           setDeleteData={setDeletaData}
@@ -84,11 +99,7 @@ function App() {
         modalData={modalData}
         setModalData={setModalData}
       />
-      <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
-        <button onClick={sortByKm}>SORT by km.</button>
-        <button onClick={sortByDate}>SORT by date</button>
-      </div>
-      <div
+      {/* <div
         style={{
           textAlign: 'center',
         }}
@@ -102,7 +113,7 @@ function App() {
             <b>{kolt.totalRide}</b> km., last used: <b>{kolt.lastUsed}</b>
           </div>
         ))}
-      </div>
+      </div> */}
     </>
   );
 }
