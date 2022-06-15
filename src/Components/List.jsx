@@ -7,8 +7,7 @@ function List({
   setModalData,
   selectDate,
   selectRide,
-  sortByDate,
-  sortByKm,
+  sort,
 }) {
   // console.log(kolts);
   return (
@@ -25,8 +24,8 @@ function List({
             kolts={kolts}
             selectDate={selectDate}
             selectRide={selectRide}
-            sortByDate={sortByDate}
-            sortByKm={sortByKm}
+            sort={sort}
+            // sortByKm={sortByKm}
           />
           <option value=''></option>
         </div>

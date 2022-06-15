@@ -9,7 +9,7 @@ function Edit({ modalData, setModalData, setEditData }) {
 
   const cbClick = () => {
     setChbox(!chbox);
-    setIsBusy(chbox ? (modalData.isBusy = 1) : modalData.isBusy === 0);
+    setIsBusy(chbox ? (modalData.isBusy = 1) : (modalData.isBusy = 0));
   };
 
   useEffect(() => {

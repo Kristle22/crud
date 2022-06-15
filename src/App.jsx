@@ -22,55 +22,18 @@ function App() {
   const [selectRide, setselectRide] = useState('Total Ride');
   console.log('selectDate', selectDate);
 
-  const [sort, dispachSort] = useReducer(sortReducer, []);
-  console.log('sort', sort);
+  const [sortKolts, dispachSort] = useReducer(sortReducer, []);
+  console.log('sort', sortKolts);
 
-  const sortByKm = (e) => {
+  const sort = (e) => {
     const sortOrder = e.target.value;
     setselectRide(sortOrder);
-    if (sortOrder === 'asc') {
-      const action = {
-        type: 'sort_km_asc',
-        payload: kolts,
-      };
-      dispachSort(action);
-    } else if (sortOrder === 'desc') {
-      const action = {
-        type: 'sort_km_desc',
-        payload: kolts,
-      };
-      dispachSort(action);
-    } else {
-      const action = {
-        type: 'default',
-        payload: kolts,
-      };
-      dispachSort(action);
-    }
-  };
-
-  const sortByDate = (e) => {
-    const sortOrder = e.target.value;
     setselectDate(sortOrder);
-    if (sortOrder === 'asc') {
-      const action = {
-        type: 'sort_date_asc',
-        payload: kolts,
-      };
-      dispachSort(action);
-    } else if (sortOrder === 'desc') {
-      const action = {
-        type: 'sort_date_desc',
-        payload: kolts,
-      };
-      dispachSort(action);
-    } else {
-      const action = {
-        type: 'default',
-        payload: kolts,
-      };
-      dispachSort(action);
-    }
+    const action = {
+      type: sortOrder,
+      payload: kolts,
+    };
+    dispachSort(action);
   };
 
   // Read
@@ -125,8 +88,8 @@ function App() {
           setModalData={setModalData}
           selectDate={selectDate}
           selectRide={selectRide}
-          sortByDate={sortByDate}
-          sortByKm={sortByKm}
+          sort={sort}
+          // sortByKm={sortByKm}
         />
       </div>
       <Edit
@@ -144,7 +107,7 @@ function App() {
         <h2 style={{ margin: '10px' }}>
           Sorting kolts by total Ride and last used date
         </h2>
-        {sort.map((kolt) => (
+        {sortKolts.map((kolt) => (
           <div key={kolt.id}>
             Kolt <b>id_{kolt.id}</b> <i>{kolt.regCode}</i>, total ride:{' '}
             <b>{kolt.totalRide}</b> km., last used: <b>{kolt.lastUsed}</b>
