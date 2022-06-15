@@ -98,7 +98,7 @@ function App() {
         setModalData={setModalData}
         kolts={kolts}
       />
-      <div
+      {/* <div
         style={{
           textAlign: 'center',
           marginBottom: '20px',
@@ -113,7 +113,7 @@ function App() {
             <b>{kolt.totalRide}</b> km., last used: <b>{kolt.lastUsed}</b>
           </div>
         ))}
-      </div>
+      </div> */}
     </>
   );
 }
