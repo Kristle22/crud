@@ -1,14 +1,11 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 
 function Edit({ modalData, setModalData, setEditData }) {
   const [isBusy, setIsBusy] = useState(1);
   const [lastUsed, setLastUsed] = useState('');
-  const [totalRide, setTotalRide] = useState(0);
+  const [totalRide, setTotalRide] = useState('');
 
   const [chbox, setChbox] = useState(false);
-
-  let koltRide = useRef(0);
-  let oneKoltRide = koltRide.current;
 
   const cbClick = () => {
     setChbox(!chbox);
@@ -19,6 +16,7 @@ function Edit({ modalData, setModalData, setEditData }) {
     if (null === modalData) {
       return;
     }
+    setIsBusy(modalData.isBusy);
     setLastUsed(modalData.lastUsed);
     setTotalRide(modalData.totalRide);
     setTotalRide('');
@@ -28,17 +26,17 @@ function Edit({ modalData, setModalData, setEditData }) {
     const data = {
       isBusy,
       lastUsed,
-      totalRide,
+      totalRide: Number(modalData.totalRide) + Number(totalRide),
       id: modalData.id,
       regCode: modalData.regCode,
     };
-    setTotalRide((koltRide.current += Number(totalRide)));
     setEditData(data);
     setModalData(null);
   };
   if (null === modalData) {
     return null;
   }
+  console.log(totalRide);
 
   return (
     <>
@@ -105,7 +103,9 @@ function Edit({ modalData, setModalData, setEditData }) {
                 />
                 <h4>
                   Total Ride:{' '}
-                  <span className='old'>{oneKoltRide.toFixed(2)} km.</span>
+                  <span className='old'>
+                    {Number(modalData.totalRide).toFixed(2)} km.
+                  </span>
                 </h4>
                 <label>Enter today's distance (km.):</label>
                 <input

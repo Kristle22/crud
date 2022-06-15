@@ -1,28 +1,18 @@
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import rand from '../Functions/randNumbers';
-import Statistic from './Statistic';
-// import getRandomFloat from '../randomFloat';
-// import randomDate from '../randomDate';
 
-function Create({ setCreateData }) {
+function Create({ setCreateData, kolts }) {
   const [regCode, setRegCode] = useState('KO' + rand(100000, 999999));
   const [isBusy, setIsBusy] = useState(1);
   const [lastUsed, setLastUsed] = useState('');
   const [totalRide, setTotalRide] = useState('');
-  console.log(new Date(lastUsed).getTime());
-  let koltCount = useRef(0);
-  let koltSum = useRef(0);
-  let allKoltsRide = koltSum.current;
 
   const handleCreate = () => {
-    koltCount.current++;
     const data = { regCode, isBusy, lastUsed, totalRide };
     setCreateData(data);
     setRegCode('KO' + rand(100000, 999999));
     setIsBusy(1);
     setLastUsed('');
-    setTotalRide((koltSum.current += Number(totalRide)).toFixed(2));
-    allKoltsRide += Number(totalRide);
     setTotalRide('');
   };
 
@@ -67,11 +57,6 @@ function Create({ setCreateData }) {
           </form>
         </div>
       </div>
-      <Statistic
-        quantity={koltCount.current}
-        koltsTotalRide={allKoltsRide.toFixed(2)}
-        totalRide={totalRide}
-      />
     </>
   );
 }

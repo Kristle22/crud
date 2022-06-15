@@ -59,12 +59,12 @@ form input.ride {
 
 .heading,
 .flex-card h4,
+.sorting,
 .form h3 {
   font-family: cursive;
   padding: 5px 10px 20px 10px;
 }
 .heading {
-  margin-top: 20px;
   padding: 0;
 }
 .field {
@@ -110,17 +110,39 @@ p.isBusy {
   width: 100%;
 }
 .flex-card p,
-.flex-card h4 {
-  width: 15%;
+.flex-card h4,
+.sorting {
+  font-size: 16px;
+  width: 16%;
   padding: 10px;
   border-bottom: 1px solid #fff;
+}
+.sorting {
+  text-overflow: ellipsis;
+  font-weight: bold;
+  margin: 7px 3px;
+  border: 3px solid #777c8a;
+  border-radius: 5px;
+  padding: 0;
+}
+.sorting:hover {
+  background-color: #777c8a;
+}
+.sorting .btns {
+  width: 10%;
+}
+
+.btns {
+  width: 17%;
+  display: flex;
+  flex-direction: column;
 }
 button {
   border: none;
   border-radius: 5px;
   background-color: #5db75f;
   color: #fff;
-  padding: 7px 30px;
+  padding: 7px;
   margin: 8px;
   cursor: pointer;
   justify-items: flex-end;
@@ -177,9 +199,15 @@ fieldset {
 }
 
 .statistic {
-  margin-top: 30px;
+  display: flex;
   font-family: monospace;
   font-size: 20px;
+  margin: 30px 0;
+}
+.statistic p {
+  width: 50%;
+  padding: 0 20px;
+  border-left: 2px solid #fff;
 }
 
 .close-x {
@@ -196,4 +224,15 @@ fieldset {
 }
 img.scooter {
   width: 50%;
+}
+
+@media screen and (max-width: 700px) {
+  .btns {
+    display: flex;
+    flex-direction: row;
+    width: 60%;
+  }
+  .btns button {
+    width: 100%;
+  }
 }

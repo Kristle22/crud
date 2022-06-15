@@ -17,13 +17,15 @@ function Kolt({ kolt, setDeleteData, setModalData }) {
           <p className='isBusy'>busy</p>
         )}
         <p>{kolt.lastUsed}</p>
-        <p>{kolt.totalRide}</p>
-        <button type='button' className='edt' onClick={handleModal}>
-          Edit
-        </button>
-        <button type='button' className='dlt' onClick={handleDelete}>
-          Delete
-        </button>
+        <p>{Number(kolt.totalRide).toFixed(2)} km.</p>
+        <div className='btns'>
+          <button type='button' className='edt' onClick={handleModal}>
+            Edit
+          </button>
+          <button type='button' className='dlt' onClick={handleDelete}>
+            Delete
+          </button>
+        </div>
       </div>
     </>
   );

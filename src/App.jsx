@@ -6,6 +6,7 @@ import List from './Components/List';
 import Edit from './Components/Edit';
 import { useReducer } from 'react';
 import sortReducer from './Components/sortReducer';
+import Statistic from './Components/Statistic';
 
 function App() {
   const [lastUpdate, setLastUpdate] = useState(Date.now());
@@ -17,30 +18,59 @@ function App() {
   const [deleteData, setDeletaData] = useState(null);
   const [editData, setEditData] = useState(null);
 
+  const [selectDate, setselectDate] = useState('Last Used');
+  const [selectRide, setselectRide] = useState('Total Ride');
+  console.log('selectDate', selectDate);
+
   const [sort, dispachSort] = useReducer(sortReducer, []);
+  console.log('sort', sort);
 
-  const sortByKm = () => {
-    const action = {
-      type: 'sort_km',
-      payload: kolts,
-    };
-    dispachSort(action);
+  const sortByKm = (e) => {
+    const sortOrder = e.target.value;
+    setselectRide(sortOrder);
+    if (sortOrder === 'asc') {
+      const action = {
+        type: 'sort_km_asc',
+        payload: kolts,
+      };
+      dispachSort(action);
+    } else if (sortOrder === 'desc') {
+      const action = {
+        type: 'sort_km_desc',
+        payload: kolts,
+      };
+      dispachSort(action);
+    } else {
+      const action = {
+        type: 'default',
+        payload: kolts,
+      };
+      dispachSort(action);
+    }
   };
 
-  const refresh = () => {
-    const action = {
-      type: 'refresh',
-      payload: kolts,
-    };
-    dispachSort(action);
-  };
-
-  const sortByDate = () => {
-    const action = {
-      type: 'sort_date',
-      payload: kolts,
-    };
-    dispachSort(action);
+  const sortByDate = (e) => {
+    const sortOrder = e.target.value;
+    setselectDate(sortOrder);
+    if (sortOrder === 'asc') {
+      const action = {
+        type: 'sort_date_asc',
+        payload: kolts,
+      };
+      dispachSort(action);
+    } else if (sortOrder === 'desc') {
+      const action = {
+        type: 'sort_date_desc',
+        payload: kolts,
+      };
+      dispachSort(action);
+    } else {
+      const action = {
+        type: 'default',
+        payload: kolts,
+      };
+      dispachSort(action);
+    }
   };
 
   // Read
@@ -82,26 +112,33 @@ function App() {
   return (
     <>
       <div className='container'>
-        <Create setCreateData={setCreateData} />
-        <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
+        <Create setCreateData={setCreateData} kolts={kolts} />
+        <Statistic kolts={kolts} />
+        {/* <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
           <button onClick={sortByKm}>SORT by km.</button>
           <button onClick={refresh}>REFRESH</button>
           <button onClick={sortByDate}>SORT by date</button>
-        </div>
+        </div> */}
         <List
           kolts={kolts}
           setDeleteData={setDeletaData}
           setModalData={setModalData}
+          selectDate={selectDate}
+          selectRide={selectRide}
+          sortByDate={sortByDate}
+          sortByKm={sortByKm}
         />
       </div>
       <Edit
         setEditData={setEditData}
         modalData={modalData}
         setModalData={setModalData}
+        kolts={kolts}
       />
-      {/* <div
+      <div
         style={{
           textAlign: 'center',
+          marginBottom: '20px',
         }}
       >
         <h2 style={{ margin: '10px' }}>
@@ -113,7 +150,7 @@ function App() {
             <b>{kolt.totalRide}</b> km., last used: <b>{kolt.lastUsed}</b>
           </div>
         ))}
-      </div> */}
+      </div>
     </>
   );
 }

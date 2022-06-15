@@ -1,4 +1,10 @@
-function Statistic({ quantity, koltsTotalRide, totalRide }) {
+function Statistic({ kolts }) {
+  const koltsTotalRide =
+    kolts &&
+    kolts
+      .map((klt) => Number(klt.totalRide))
+      .reduce((total, val) => total + val, 0);
+
   return (
     <>
       <div
@@ -7,7 +13,6 @@ function Statistic({ quantity, koltsTotalRide, totalRide }) {
           backgroundColor: '#5a5f6f',
           color: '#fff',
           padding: '20px',
-          width: 'fit-content',
           borderRadius: '5px',
         }}
       >
@@ -20,7 +25,7 @@ function Statistic({ quantity, koltsTotalRide, totalRide }) {
               lineHeight: '15px',
             }}
           >
-            {quantity}
+            {kolts && kolts.length}
           </b>
         </p>
         <p>
@@ -32,7 +37,7 @@ function Statistic({ quantity, koltsTotalRide, totalRide }) {
               lineHeight: '15px',
             }}
           >
-            {koltsTotalRide}
+            {kolts && koltsTotalRide.toFixed(2)}
           </b>{' '}
           km.
         </p>
