@@ -12,7 +12,6 @@ function Statistic({ kolts }) {
         style={{
           backgroundColor: '#5a5f6f',
           color: '#fff',
-          padding: '20px',
           borderRadius: '5px',
         }}
       >
