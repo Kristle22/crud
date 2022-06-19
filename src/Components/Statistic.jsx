@@ -20,8 +20,6 @@ function Statistic({ kolts }) {
           <b
             style={{
               textDecoration: 'underline',
-              fontSize: '25px',
-              lineHeight: '15px',
             }}
           >
             {kolts && kolts.length}
@@ -32,8 +30,6 @@ function Statistic({ kolts }) {
           <b
             style={{
               textDecoration: 'underline',
-              fontSize: '25px',
-              lineHeight: '15px',
             }}
           >
             {kolts && koltsTotalRide.toFixed(2)}

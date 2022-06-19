@@ -171,7 +171,7 @@ button.put {
   border: 3px solid #4e8d4e;
   position: relative;
   display: flex;
-  width: 95vw;
+  width: 90vw;
   max-width: 500px;
   background-color: #5db75f;
   align-items: center;
@@ -203,14 +203,17 @@ fieldset {
 .statistic {
   display: flex;
   font-family: monospace;
-  font-size: 20px;
   margin: 30px 0;
   padding: 10px;
 }
 .statistic p {
+  font-size: 24px;
   width: 50%;
   padding: 0 10px;
   border-left: 2px solid #fff;
+}
+.statistic p b {
+  font-size: 24px;
 }
 
 .close-x {
@@ -230,6 +233,9 @@ img.scooter {
 }
 
 @media screen and (max-width: 800px) {
+  .container {
+    width: 95%;
+  }
   .btns {
     display: flex;
     flex-direction: row;
@@ -241,10 +247,16 @@ img.scooter {
   .flex-card p,
   .flex-card h4,
   .sorting {
-    font-size: 14px;
+    font-size: 16px;
     width: 19%;
-    padding: 10px;
+    padding: 5px;
     border-bottom: 1px solid #fff;
     overflow-wrap: break-word;
+  }
+  .statistic p {
+    font-size: 16px;
+  }
+  .statistic p b {
+    font-size: 19px;
   }
 }
